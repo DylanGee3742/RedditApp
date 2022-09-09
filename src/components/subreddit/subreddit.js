@@ -1,11 +1,12 @@
 import "./subreddit.css";
+import { Subreddits } from "../../features/subreddit/subreddit";
 
 export const Subreddit = () => {
     return (
         <div className= "subreddit">
             <div className= "subreddit-container">
 
-                {/* <Subreddit /> */}
+                <Subreddits />
             </div>
         </div>
     )
