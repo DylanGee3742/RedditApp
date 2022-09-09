@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Header } from "./components/header/header.js";
 import { Home } from "./components/home/home.js";
-import { Subreddit } from "./components/subreddit/subreddit";
+import { Subreddit } from "./components/subreddit/subreddit.js";
 
 
 function App() {
