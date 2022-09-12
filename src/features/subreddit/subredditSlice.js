@@ -24,7 +24,6 @@ export const SubredditsSlice = createSlice({
         [fetchSubreddits.rejected]: (state, action)  => {
             state.isLoadingSubreddits = false;
             state.failedToLoadSubreddits = true;
-            state.error = action.error.message
         }
     }
 

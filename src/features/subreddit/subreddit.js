@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchSubreddits } from "../../api/api";
 import { selectSubreddits } from "./subredditSlice";
 
-
-
 export const Subreddits = () => {
     const subreddits = useSelector(selectSubreddits);
     const dispatch = useDispatch()
