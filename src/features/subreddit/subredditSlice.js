@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 export const fetchSubreddits = createAsyncThunk(
-    'subbreddit/fetchSubreddit',
+    'subreddit/fetchSubreddit',
     async () => {
-        const response = await fetch(`https://www.reddit.com/r/popular.json`)
+        const response = await fetch(`https://www.reddit.com/subreddits.json`)
         const json = await response.json()
-        return json.data.children.map((element) => element.data)
+        return json.data.children.map(subreddit => subreddit.data);
     }
 )
 
@@ -15,7 +15,6 @@ export const SubredditsSlice = createSlice({
         subreddits: [],
         isLoadingSubreddits: false,
         failedToLoadSubreddits: false,
-        error: ''
     },
     reducers: {
 
@@ -28,7 +27,7 @@ export const SubredditsSlice = createSlice({
         [fetchSubreddits.fulfilled]: (state, action) => {
             state.isLoadingSubreddits = false;
             state.failedToLoadSubreddits = false;
-            state.subreddits.push(action.payload)
+            state.subreddits = action.payload;
         },
         [fetchSubreddits.rejected]: (state, action)  => {
             state.isLoadingSubreddits = false;
@@ -39,7 +38,6 @@ export const SubredditsSlice = createSlice({
 
 })
 
-
-export const selectSubreddits = state  => state.subreddits.subreddits;
+export const selectSubreddits = state => state.subreddits.subreddits;
 
 export default SubredditsSlice.reducer
