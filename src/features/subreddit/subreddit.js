@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { fetchSubreddits } from "../../api/api";
 import { selectSubreddits } from "./subredditSlice";
-import { fetchSubreddits} from "./subredditSlice";
+
 
 
 export const Subreddits = () => {
