@@ -1,0 +1,9 @@
+.post-container {
+    display: flex;
+    flex-flow: column wrap;
+    border: 1px solid black;
+}
+
+.indiv-post {
+    border: 1px solid black;
+}
