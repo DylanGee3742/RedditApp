@@ -15,7 +15,7 @@ export const Subreddits = () => {
 
     useEffect(() => {
         dispatch(fetchPosts(selected));
-    }, []);
+    });
 
     return (
         <div className = "subreddits">
