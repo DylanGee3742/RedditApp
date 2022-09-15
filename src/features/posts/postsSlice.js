@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts } from "../../api/api";
+import { fetchPosts, fetchComments } from "../../api/api";
 
 export const PostsSlice = createSlice({
     name: 'posts',
@@ -29,6 +29,10 @@ export const PostsSlice = createSlice({
     }
 })
 
-export const selectPosts = state => state.posts.posts
+export const selectPosts = state => state.posts.posts;
+
+export const selectPostPermalink = state => {
+    return state.posts.posts.map(post => post.permalink)
+};
 
 export default PostsSlice.reducer;
