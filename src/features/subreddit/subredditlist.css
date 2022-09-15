@@ -1,0 +1,22 @@
+.subredditlist {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    border: 1px solid rgb(177, 176, 176);
+    border-radius: 15px;
+}
+
+.subredditbutton {
+    background: none;
+    border: none;
+}
+
+.subredditbutton:hover {
+    cursor: pointer;
+}
+
+.subredditicon {
+    height: 2em;
+    width: 2em;
+    border-radius: 15px;;
+}
