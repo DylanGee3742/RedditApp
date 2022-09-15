@@ -3,11 +3,18 @@
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    max-width: 100%;
 }
 
 .singlepost {
     border: 1px solid black;
     background-color: lightblue;
     justify-content: center;
-    margin-top: 1em;
+    margin-top: 2em;
+    width: 50em;
+    max-width: 100%;
+}
+
+.postcontent {
+    text-align: center;
 }
