@@ -1,32 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchComments } from "../../api/api";
+import { getPostComments } from "../../api/api";
 
-export const CommentsSlice = createSlice({
+
+const commentsSlice = createSlice({
     name: 'comments',
     initialState: {
         comments: [],
-        isLoading: false,
+        LoadingComments: false,
         failedToLoad: false
     },
     reducers: {
+
     },
     extraReducers: {
-        [fetchComments.pending]: (state, action) => {
-            state.isLoading = true;
+        [getPostComments.pending]: (state, action) => {
+            state.LoadingComments =  true;
             state.failedToLoad = false;
+
         },
-        [fetchComments.fulfilled]: (state, action) => {
+        [getPostComments.fulfilled]: (state, action) => {
             state.comments = action.payload;
-            state.isLoading = false;
+            state.LoadingComments = false;
             state.failedToLoad = false;
         },
-        [fetchComments.rejected]: (state, action) => {
-            state.isLoading = false;
+        [getPostComments.rejected]: (state, action) => {
+            state.LoadingComments = false;
             state.failedToLoad = true;
         }
     }
 })
 
+
 export const selectComments = state => state.comments.comments
 
-export default CommentsSlice.reducer;
+export const selectPostComments = state => {
+    return state.comments.comments.map(comment => comment.id)
+};
+
+export default commentsSlice.reducer;
