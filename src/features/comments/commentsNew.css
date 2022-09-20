@@ -1,0 +1,8 @@
+.comment {
+    margin: 1em;
+    list-style: none;
+}
+
+.commentTop { 
+    font-weight: bold;
+}
