@@ -1,29 +1,20 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { selectPosts, selectPostPermalink } from "./postsSlice";
+import { selectPosts } from "./postsSlice";
 import './posts.css';
 import moment from 'moment';
 import { BsFillArrowUpSquareFill, BsArrowDownSquareFill } from 'react-icons/bs';
-import { fetchComments } from "../../api/api";
-import { selectComments } from "../comments/commentsSlice";
-
+import { CommentsNew } from "../comments/commentsNew";
 
 export const Posts = () => {
     const dispatch = useDispatch()
     const posts = useSelector(selectPosts);
-    const permalinks = useSelector(selectPostPermalink)
-    const comments = useSelector(selectComments);
-    console.log(posts)
-  
-    useEffect(() => {
-        dispatch(fetchComments(permalinks))
-    }, []);
+
 
     return (
         <div className = "post-container" >
-            {posts.map((post) => (
+            {posts.map((post, index) => (
                 <article 
-                key={post.id}
+                key={index}
                 className= 'singlepost'>
                     <button><BsFillArrowUpSquareFill />{post.ups}</button>
                     <div className='postcontent'>
@@ -36,6 +27,7 @@ export const Posts = () => {
                      <br></br>
                     </div>
                      <button><BsArrowDownSquareFill />{post.downs}</button>
+                     <CommentsNew num_comments = {post.num_comments} permalink = {post.permalink} index={index} />
                 </article>               
             ))}
         </div>
