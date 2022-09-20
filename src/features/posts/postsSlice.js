@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts, fetchComments } from "../../api/api";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { fetchPosts, getPostComments } from "../../api/api";
+import { selectSearchTerm } from "../searchTerm/searchTermSlice";
 
 export const PostsSlice = createSlice({
     name: 'posts',
@@ -9,7 +10,6 @@ export const PostsSlice = createSlice({
         failedToLoad: false
     },
     reducers: {
-
     },
     extraReducers: {
         [fetchPosts.pending]: (state, action) => {
@@ -31,8 +31,18 @@ export const PostsSlice = createSlice({
 
 export const selectPosts = state => state.posts.posts;
 
-export const selectPostPermalink = state => {
-    return state.posts.posts.map(post => post.permalink)
-};
+
+export const selectFilteredPosts = createSelector(
+    [selectPosts, selectSearchTerm],
+    (posts, searchTerm) => {
+        if (searchTerm !== '') {
+            return posts.filter((post) => 
+            post.title.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
+        return posts;
+    }
+)
+
 
 export default PostsSlice.reducer;
